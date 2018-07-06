@@ -10,17 +10,63 @@ When you deploy the stack, a python script downloads the current status (updates
 
 ## Getting Started
 
-- Make sure you have docker swarm!
+1. Make sure you have docker swarm!
+2. Clone the project by running:
 
-- Clone the project by running:
+```git clone https://github.com/eeddaann/ElastiCup.git```
 
-  ```git clone https://github.com/eeddaann/ElastiCup.git```
+3. Build the Docker images:
 
-- build the image and deploy the docker stack:
+   - Kibana's image:
 
-  ``` docker build . -t elasticup-etl && docker stack deploy -c docker-compose.yml elasticup``` 
+     ``` bash
+     docker build ./kibana -t kibana-canvas
+     ```
 
-- Now open the browser and go to:
+     *This can take few minutes because of the installation of canvas..* 
 
-  ```http://127.0.0.1:5601``` 
+   - ETL (extract - transforom - load) image:
 
+     ```bash
+     docker build ./etl -t elasticup-etl
+     ```
+
+4. Deploy the docker stack:
+
+``` docker stack deploy -c docker-compose.yml elasticup``` 
+
+5. Now open kibana on:
+
+```http://127.0.0.1:5601``` 
+
+6. Click on "Canvas" in the side menu 
+7. Load the workpad by clicking on "workpads" button at the bottom menu
+8. Drag and drop elasticup.json
+
+## Screenshots
+
+![](./images/1.png)
+
+![](./images/2.png)
+
+![](./images/3.png)
+
+![](./images/4.png)
+
+## data
+
+The data is imported from: https://worldcup.sfg.io/matches
+
+To analyze this data efficiently with Elasticsearch I decomposed the data about each match to three elasticsearch's documents. Each kind of documented is loaded into dedicated index:
+
+### matches
+
+![](./images/matches.png)
+
+## team-stats
+
+![](./images/team-stats.png)
+
+## events
+
+![](./images/events.png)

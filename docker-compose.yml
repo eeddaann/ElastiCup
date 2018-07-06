@@ -1,13 +1,22 @@
 version: '3.6'
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0 # for canvas X-Pack with a Basic or higher license is required
     environment: ['http.host=0.0.0.0', 'transport.host=127.0.0.1']
     ports: ['127.0.0.1:9200:9200']
 
   kibana:
-    image: docker.elastic.co/kibana/kibana-oss:6.3.0
+    image: kibana-canvas
     ports: ['127.0.0.1:5601:5601']
+    environment:
+      NODE_OPTIONS: "--max-old-space-size=4096"
   
   etl:
     image: elasticup-etl
+    deploy:
+      restart_policy:
+        condition: none
+        #condition: on-failure
+        #delay: 5s
+        #max_attempts: 3
+        #window: 120s
