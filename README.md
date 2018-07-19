@@ -6,7 +6,7 @@ This project loads automatically information about world cup games into Elastcse
 
 It sets up elasticsearch and kibana docker containers which are ready for your analysis. 
 
-When you deploy the stack, a python script downloads the current status (updates every minute!) and load it instently to elasticsearch!
+When you deploy the stack, a python script downloads the current status (updates every minute!) and load it instantly to elasticsearch!
 
 ## Getting Started
 
@@ -41,7 +41,7 @@ When you deploy the stack, a python script downloads the current status (updates
 
 6. Click on "Canvas" in the side menu 
 7. Load the workpad by clicking on "workpads" button at the bottom menu
-8. Drag and drop elasticup.json
+8. Drag and drop matches.json
 
 ## Screenshots
 
