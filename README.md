@@ -51,8 +51,6 @@ When you deploy the stack, a python script downloads the current status (updates
 
 ![](./images/3.png)
 
-![](./images/4.png)
-
 ## data
 
 The data is imported from: https://worldcup.sfg.io/matches
